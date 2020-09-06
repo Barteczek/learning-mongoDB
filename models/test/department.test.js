@@ -1,6 +1,5 @@
 const Department = require('../department.model.js');
 const expect = require('chai').expect;
-const mongoose = require('mongoose');
 
 describe('Department', () => {
 
@@ -10,7 +9,6 @@ describe('Department', () => {
     dep.validate(err => {
       expect(err.errors.name).to.exist;
     });
-  
   });
 
   it('should throw an error if "name" is not a string', () => {
@@ -22,9 +20,7 @@ describe('Department', () => {
       dep.validate(err => {
         expect(err.errors.name).to.exist;
       });
-  
     }
-  
   });
 
   it('should throw an error if "name" is less than 5 or greater than 20 characters', () => {
@@ -36,9 +32,7 @@ describe('Department', () => {
       dep.validate(err => {
         expect(err.errors.name).to.exist;
       });
-  
     }
-  
   });
 
   it('should not throw an error if "name" is given correctly', () => {
@@ -50,14 +44,6 @@ describe('Department', () => {
       dep.validate(err => {
         expect(err).to.not.exist;
       });
-  
     }
-  
   });
-
-  after(() => {
-    mongoose.models = {};
-  });
-  
-
 });
